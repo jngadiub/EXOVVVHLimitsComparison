@@ -1,0 +1,41 @@
+import ROOT
+from array import array
+from ROOT import *
+
+x = array('d',[1.,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2.,2.1,2.2,2.3,2.4,2.5])
+y = array('d',[0.0473213822,0.0681481248,0.0547198526,0.0314379913,0.0235534814,0.0176352977,0.0137156464,0.012735311,0.0122893966,0.0089093604,0.0085014604,0.0076816526,0.0054280923,0.0055302285,0.0057347607,0.0054286434])
+#y = array('d',[0.0739637926,0.1065216061,0.0855363588,0.0491453772,0.0368218015,0.0275641463,0.0214387805,0.019907439,0.0192113747,0.0139282467,0.0132878675,0.0120071092,0.0084850238,0.0086451186,0.0089653082,0.0084850238])
+
+outfile_WW = ROOT.TFile("Limits_EXO_13_009_WW.root","RECREATE")
+
+gr_obs_WW = ROOT.TGraph(len(x),x,y)
+gr_obs_WW.SetName("OBSERVED")
+
+gr_exp_WW = ROOT.TGraph(len(x),x,y)
+gr_exp_WW.SetName("EXPECTED")
+
+gr_exp_WW.Write()
+gr_obs_WW.Write()
+
+outfile_WW.Write()
+outfile_WW.Close()
+
+#br = 0.10363/0.06729
+br = 1
+ 
+x = array('d',[1.,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2.,2.1,2.2,2.3,2.4,2.5])
+y = array('d',[0.0344676318*br,0.0392991649*br,0.0473773266*br,0.0385086644*br,0.0188542422*br,0.0254899533*br,0.0282007896*br,0.0374853573*br,0.0406091371*br,0.0401861252*br,0.027333073*br,0.014317324*br,0.0134496074*br,0.018655907*br,0.0255976398*br,0.0255976398*br])
+
+outfile_ZZ = ROOT.TFile("Limits_EXO_13_009_ZZ.root","RECREATE")
+
+gr_obs_ZZ = ROOT.TGraph(len(x),x,y)
+gr_obs_ZZ.SetName("OBSERVED")
+
+gr_exp_ZZ = ROOT.TGraph(len(x),x,y)
+gr_exp_ZZ.SetName("EXPECTED")
+
+gr_exp_ZZ.Write()
+gr_obs_ZZ.Write()
+
+outfile_ZZ.Write()
+outfile_ZZ.Close()
